@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5D2A5E191DB6B19300015B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E181DB6B19300015B28 /* AppDelegate.swift */; };
-		5D2A5E1B1DB6B19300015B28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E1A1DB6B19300015B28 /* ViewController.swift */; };
+		5D2A5E1B1DB6B19300015B28 /* ScheduleTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E1A1DB6B19300015B28 /* ScheduleTimerViewController.swift */; };
 		5D2A5E1E1DB6B19300015B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A5E1C1DB6B19300015B28 /* Main.storyboard */; };
 		5D2A5E201DB6B19300015B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A5E1F1DB6B19300015B28 /* Assets.xcassets */; };
 		5D2A5E231DB6B19300015B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A5E211DB6B19300015B28 /* LaunchScreen.storyboard */; };
 		5D2A5E2E1DB6B19300015B28 /* Class_TimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E2D1DB6B19300015B28 /* Class_TimesTests.swift */; };
 		5D2A5E391DB6B19300015B28 /* Class_TimesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E381DB6B19300015B28 /* Class_TimesUITests.swift */; };
+		5D8CEE221DBA796300283B5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CEE211DBA796300283B5B /* Schedule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		5D2A5E151DB6B19300015B28 /* Class Times.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Class Times.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2A5E181DB6B19300015B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5D2A5E1A1DB6B19300015B28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5D2A5E1A1DB6B19300015B28 /* ScheduleTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTimerViewController.swift; sourceTree = "<group>"; };
 		5D2A5E1D1DB6B19300015B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D2A5E1F1DB6B19300015B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D2A5E221DB6B19300015B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		5D2A5E341DB6B19300015B28 /* Class TimesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Class TimesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2A5E381DB6B19300015B28 /* Class_TimesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class_TimesUITests.swift; sourceTree = "<group>"; };
 		5D2A5E3A1DB6B19300015B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D8CEE211DBA796300283B5B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,8 @@
 		5D2A5E171DB6B19300015B28 /* Class Times */ = {
 			isa = PBXGroup;
 			children = (
-				5D2A5E1A1DB6B19300015B28 /* ViewController.swift */,
+				5D2A5E1A1DB6B19300015B28 /* ScheduleTimerViewController.swift */,
+				5D8CEE211DBA796300283B5B /* Schedule.swift */,
 				5D2A5E1C1DB6B19300015B28 /* Main.storyboard */,
 				5D2A5E461DB6B1E900015B28 /* Supporting Files */,
 			);
@@ -270,7 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2A5E1B1DB6B19300015B28 /* ViewController.swift in Sources */,
+				5D8CEE221DBA796300283B5B /* Schedule.swift in Sources */,
+				5D2A5E1B1DB6B19300015B28 /* ScheduleTimerViewController.swift in Sources */,
 				5D2A5E191DB6B19300015B28 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +526,7 @@
 				5D2A5E3F1DB6B19300015B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D2A5E401DB6B19300015B28 /* Build configuration list for PBXNativeTarget "Class TimesTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +535,7 @@
 				5D2A5E421DB6B19300015B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D2A5E431DB6B19300015B28 /* Build configuration list for PBXNativeTarget "Class TimesUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +544,7 @@
 				5D2A5E451DB6B19300015B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
