@@ -17,7 +17,7 @@ enum Lunch {
 }
 
 class Schedule {
-    self.times
+    var times = [Int: Course]()
     init(forDay day: Weekday, withCourses courses: [Int: Course]) {
         
     }
@@ -47,10 +47,29 @@ struct Time: Comparable {
         self.seconds = seconds
     }
     init(withTimeString string: String) {
-        var components = [String]()
+        var components = ["", "", ""]
+        var selector = 0
         for char in string.characters {
-            
+            if char != ":" && char != " " {
+                components[0] += String(char)
+            }
+            else {
+                if char == " " {
+                    selector += 1
+
+                }
+
+            }
         }
+        let hours = Int(components[0])
+        let minutes = Int(components[1])
+        if components[2] == "" {
+            let seconds = 0
+        }
+        else {
+            let seconds = Int(components[2])
+        }
+        
     }
     init() {
         let cal = NSCalendar(identifier: NSCalendar.Identifier.gregorian)
