@@ -51,7 +51,7 @@ struct Time: Comparable {
         var selector = 0
         for char in string.characters {
             if char != ":" && char != " " {
-                components[0] += String(char)
+                components[selector] += String(char)
             }
             else {
                 if char == ":" {
@@ -86,12 +86,15 @@ struct Time: Comparable {
         else {
             amPm = "AM"
         }
-        var toReturn = String(hours) + ":" + String(minutes)
+        var toReturn = String(hours) + ":"
+        if String(minutes).characters.count == 1 {
+            toReturn += "0" + String(minutes)
+        }
         if secs != 0 {
-            toReturn += ":" + String(secs) + amPm
+            toReturn += ":" + String(secs) + " " + amPm
         }
         else {
-            toReturn += amPm
+            toReturn += " " + amPm
         }
         return toReturn
     }
