@@ -14,6 +14,12 @@ class ScheduleTimerViewController: UIViewController {
         
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let noon = Time(fromString: "12:00 PM")
+        print(noon.toString())
+    }
+    
     func setup() {
         
     }
