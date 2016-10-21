@@ -42,14 +42,20 @@ struct TimeRange {
 }
 
 struct Time: Comparable {
-    let seconds: Int
-    init(withSecondsValue seconds: Int) {
+    let seconds: Double
+    init(withSecondsValue seconds: Double) {
         self.seconds = seconds
+    }
+    init(withTimeString string: String) {
+        var components = [String]()
+        for char in string.characters {
+            
+        }
     }
     init() {
         let cal = NSCalendar(identifier: NSCalendar.Identifier.gregorian)
         let time = cal?.startOfDay(for: Date())
-        self.seconds = 
+        self.seconds = (time?.timeIntervalSinceNow)! as Double
     }
     static func <(lhs: Time, rhs: Time) -> Bool {
         return lhs.seconds < rhs.seconds
