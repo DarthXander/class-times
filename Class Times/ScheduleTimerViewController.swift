@@ -10,14 +10,14 @@ import UIKit
 
 class ScheduleTimerViewController: UIViewController {
     
+    @IBOutlet var textLabel: UILabel!
+    
     struct Constants {
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let noon = Time(fromString: "12:00 PM")
-        print(noon.toString())
     }
     
     func setup() {

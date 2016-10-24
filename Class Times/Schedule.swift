@@ -77,26 +77,46 @@ struct Time: Comparable {
     func toString() -> String {
         let secs = Int(self.seconds) % 60
         let minutes = Int((self.seconds - Double(secs))/60.0) % 60
-        var hours = (Int(self.seconds)/60)/60
+        let hours = (Int(self.seconds)/60)/60
         var amPm: String
-        if hours > 12 {
-            hours -= 12
-            amPm = "PM"
-        }
-        else {
+        var finalHours: Int
+        switch hours {
+        case 0:
+            finalHours = 12
             amPm = "AM"
+        case 1..<12:
+            finalHours = hours
+            amPm = "AM"
+        case 12:
+            finalHours = hours
+            amPm = "PM"
+        case 13...24:
+            finalHours = hours - 12
+            amPm = "PM"
+        default:
+            amPm = "N/A"
+            finalHours = hours
         }
-        var toReturn = String(hours) + ":"
+        var toReturn = String(finalHours) + ":"
         if String(minutes).characters.count == 1 {
             toReturn += "0" + String(minutes)
         }
-        if secs != 0 {
-            toReturn += ":" + String(secs) + " " + amPm
-        }
         else {
-            toReturn += " " + amPm
+            toReturn += String(minutes)
         }
+        if secs != 0 {
+            if String(secs).characters.count == 1 {
+                toReturn += ":0" + String(secs)
+            }
+            else {
+                toReturn += ":" + String(secs)
+            }
+        }
+        toReturn += " " + amPm
         return toReturn
+    }
+    func isIn(range: TimeRange) -> Bool {
+        return range.start <= self && range.end >= self
     }
     static func <(lhs: Time, rhs: Time) -> Bool {
         return lhs.seconds < rhs.seconds
