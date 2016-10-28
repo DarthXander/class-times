@@ -12,8 +12,9 @@ enum Weekday {
     case monday, tuesday, wednesday, thurday, friday, saturday, sunday
 }
 
-enum Lunch {
-    case lunchA, lunchB
+enum Lunch: Int {
+    case lunchA = 2
+    case lunchB = 3
 }
 
 class Schedule {

@@ -9,7 +9,7 @@
 import Foundation
 
 class ScheduleData {
-    let data:
+    
 }
 
 enum Special: Hashable {
@@ -23,31 +23,36 @@ enum Special: Hashable {
         }
     }
     case none
-    case mass(massCase)
-    case lunch(lunchCase)
+    case mass(MassCase)
+    case lunch(Lunch)
     static func ==(lhs: Special, rhs: Special) -> Bool {
         return lhs == rhs
     }
 }
 
-enum massCase: Int {
+enum MassCase: Int {
     case mass = 1
     case notMass = 2
 }
 
-enum lunchCase: Int {
-    case lunchA = 3
-    case lunchB = 4
-}
-
 class DayScheduleData {
     let data = [Period: TimeRange]()
-    init(withData: [Period: [Special: TimeRange]], ) {
+    init(withData: [Period: [Special: TimeRange]], isMassDay: Bool, isLunch: Lunch) {
         for (key, value) in withData {
             for special in value.keys {
                 switch special {
                 case .none: data[key] = value[special]
                 case .mass(let massCase):
+                    if massCase == .mass && isMassDay {
+                        data[key] = value[special]
+                    }
+                    else if massCase == .mass && !isMassDay {
+                        data[key] = value[special]
+                    }
+                case .lunch(let lunchCase):
+                    if lunchCase == isLunch {
+                        data[key] = value[special]
+                    }
                 }
             }
         }
