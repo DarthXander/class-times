@@ -15,6 +15,7 @@
 		5D2A5E2E1DB6B19300015B28 /* Class_TimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E2D1DB6B19300015B28 /* Class_TimesTests.swift */; };
 		5D2A5E391DB6B19300015B28 /* Class_TimesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E381DB6B19300015B28 /* Class_TimesUITests.swift */; };
 		5D8CEE221DBA796300283B5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CEE211DBA796300283B5B /* Schedule.swift */; };
+		5DDCAD9B1DC3D5E90051D722 /* LaSalleScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCAD9A1DC3D5E90051D722 /* LaSalleScheduleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5D2A5E381DB6B19300015B28 /* Class_TimesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class_TimesUITests.swift; sourceTree = "<group>"; };
 		5D2A5E3A1DB6B19300015B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D8CEE211DBA796300283B5B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		5DDCAD9A1DC3D5E90051D722 /* LaSalleScheduleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaSalleScheduleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,11 @@
 		5D2A5E171DB6B19300015B28 /* Class Times */ = {
 			isa = PBXGroup;
 			children = (
+				5D2A5E461DB6B1E900015B28 /* Supporting Files */,
 				5D2A5E1A1DB6B19300015B28 /* ScheduleTimerViewController.swift */,
+				5DDCAD9A1DC3D5E90051D722 /* LaSalleScheduleData.swift */,
 				5D8CEE211DBA796300283B5B /* Schedule.swift */,
 				5D2A5E1C1DB6B19300015B28 /* Main.storyboard */,
-				5D2A5E461DB6B1E900015B28 /* Supporting Files */,
 			);
 			path = "Class Times";
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D8CEE221DBA796300283B5B /* Schedule.swift in Sources */,
+				5DDCAD9B1DC3D5E90051D722 /* LaSalleScheduleData.swift in Sources */,
 				5D2A5E1B1DB6B19300015B28 /* ScheduleTimerViewController.swift in Sources */,
 				5D2A5E191DB6B19300015B28 /* AppDelegate.swift in Sources */,
 			);

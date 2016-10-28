@@ -9,17 +9,22 @@
 import Foundation
 
 enum Weekday {
-    case Monday, Tuesday, Wednesday, Thurday, Friday, Saturday, Sunday
+    case monday, tuesday, wednesday, thurday, friday, saturday, sunday
 }
 
 enum Lunch {
-    case LunchA, LunchB
+    case lunchA, lunchB
 }
 
 class Schedule {
-    var times = [Int: Course]()
+    let times: [TimeRange:Course]
+    let day: Weekday
     init(forDay day: Weekday, withCourses courses: [Int: Course]) {
-        
+        self.day = day
+        for (key, value) in courses {
+                
+        }
+        self.times =
     }
 }
 
@@ -32,17 +37,42 @@ class Course {
     }
 }
 
-struct TimeRange {
+enum Period: Int {
+    case zero = 0
+    case one = 1
+    case two = 2
+    case three = 3
+    case four = 4
+    case five = 5
+    case six = 6
+    case seven = 7
+    case lunch = 8
+    case falconFormation = 9
+    case falconTime = 10
+    case liturgy = 11
+}
+
+struct TimeRange: Hashable {
     let start: Time
     let end: Time
+    var hashValue: Int {
+        return start.hashValue ^ end.hashValue
+    }
     init(start: Time, end: Time) {
         self.start = start
         self.end = end
+    }
+    
+    static func ==(lhs: TimeRange, rhs: TimeRange) -> Bool {
+        return lhs.start == rhs.start && lhs.end == rhs.end
     }
 }
 
 struct Time: Comparable {
     let seconds: Double
+    var hashValue: Int {
+        return seconds.hashValue
+    }
     init(fromDouble seconds: Double) {
         self.seconds = seconds
     }
