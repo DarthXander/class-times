@@ -8,10 +8,17 @@
 
 import Foundation
 
+// todo
+struct LaSalleSchedule {
+    
+}
+
+// todo
 class ScheduleData {
     
 }
 
+// done
 enum Special: Hashable {
     var hashValue: Int {
         get {
@@ -35,6 +42,7 @@ enum MassCase: Int {
     case notMass = 2
 }
 
+// done
 class DayScheduleData {
     let data = [Period: TimeRange]()
     init(withData: [Period: [Special: TimeRange]], isMassDay: Bool, isLunch: Lunch) {
