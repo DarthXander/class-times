@@ -9,15 +9,16 @@
 import UIKit
 
 class ScheduleTimerViewController: UIViewController {
-    
-    @IBOutlet var textLabel: UILabel!
-    
+
+    @IBOutlet var textView: UITextView!
+
     struct Constants {
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.text = TimeInfo.getCurrentTime().toString()
     }
     
     func setup() {

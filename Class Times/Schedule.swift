@@ -9,7 +9,7 @@
 import Foundation
 
 enum Weekday {
-    case monday, tuesday, wednesday, thurday, friday, saturday, sunday
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
 }
 
 enum Lunch: Int {
@@ -17,18 +17,26 @@ enum Lunch: Int {
     case lunchB = 3
 }
 
+// todo
 class Schedule {
     let times: [TimeRange:Course]
     let day: Weekday
-    init(forDay day: Weekday, withCourses courses: [Int: Course]) {
+    init(forDay day: Weekday, withCourses courses: [Period: Course]) {
         self.day = day
-        for (key, value) in courses {
-                
+        let lunchBase = LaSalleSchedule.lunchBase(forDay: day)!
+        let lunch = courses[lunchBase]!.lunch
+        let data = DayScheduleData(withData: LaSalleSchedule.schedule[day]!, isMassDay: LaSalleSchedule.isMassDay(), isLunch: lunch)
+        var timesData = [TimeRange:Course]()
+        for (period, range) in data.data {
+            if let course = courses[period] {
+                timesData[range] = course
+            }
         }
-        self.times =
+        self.times = timesData
     }
 }
 
+// done
 class Course {
     var name : String
     var lunch : Lunch
@@ -38,7 +46,40 @@ class Course {
     }
 }
 
-enum Period: Int {
+// done
+enum Period: Int, Hashable {
+    var hashValue: Int {
+        return self.rawValue
+    }
+    var stringValue: String {
+        get {
+            switch self {
+            case .zero: return "Zero"
+            case .one: return "One"
+            case .two: return "Two"
+            case .three: return "Three"
+            case .four: return "Four"
+            case .five: return "Five"
+            case .six: return "Six"
+            case .seven: return "Seven"
+            case .lunch: return "Lunch"
+            case .falconFormation: return "Falcon Formation"
+            case .falconTime: return "Falcon Time"
+            case .liturgy: return "Liturgy"
+            case .foodBreak: return "Break"
+            }
+        }
+    }
+    var canHaveCourse: Bool {
+        switch self {
+        case .falconFormation: return false
+        case .falconTime: return false
+        case .liturgy: return false
+        case .foodBreak: return false
+        case .lunch: return false
+        default: return true
+        }
+    }
     case zero = 0
     case one = 1
     case two = 2
@@ -51,8 +92,59 @@ enum Period: Int {
     case falconFormation = 9
     case falconTime = 10
     case liturgy = 11
+    case foodBreak = 12
 }
 
+// done
+enum Special: Hashable {
+    var hashValue: Int {
+        switch self {
+        case .none: return -1
+        case .mass(let massCase): return massCase.rawValue
+        case .lunch(let lunchCase): return lunchCase.rawValue
+        }
+    }
+    case none
+    case mass(MassCase)
+    case lunch(Lunch)
+    static func ==(lhs: Special, rhs: Special) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+}
+
+// done
+enum MassCase: Int {
+    case mass = 0
+    case notMass = 1
+}
+
+// done
+struct DayScheduleData {
+    var data = [Period: TimeRange]()
+    init(withData: [Period: [Special: TimeRange?]], isMassDay: MassCase, isLunch: Lunch) {
+        for (key, value) in withData {
+            for special in value.keys {
+                switch special {
+                case .none: data[key] = value[special]!
+                case .mass(let massCase):
+                    if massCase == isMassDay {
+                        if let v = value[special] {
+                            data[key] = v
+                        }
+                    }
+                case .lunch(let lunchCase):
+                    if lunchCase == isLunch {
+                        if let v = value[special] {
+                            data[key] = v
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// done
 struct TimeRange: Hashable {
     let start: Time
     let end: Time
@@ -63,13 +155,38 @@ struct TimeRange: Hashable {
         self.start = start
         self.end = end
     }
-    
+    init(fromString: String) {
+        var before2 = ""
+        var two = ""
+        var after2 = ""
+        var i = fromString.startIndex
+        var startString: String = ""
+        var endString: String = ""
+        for _ in fromString.characters {
+            before2 = fromString.substring(to: i)
+            two = String(fromString[i]) + String(fromString[fromString.index(after: i)])
+            after2 = fromString.substring(from: fromString.index(i, offsetBy: 3))
+            print("before: \(before2)\ntwo: \(two)\nafter: \(after2)")
+            if two == "to" {
+                startString = before2
+                endString = after2
+                break
+            }
+            i = fromString.index(after: i)
+        }
+        self.start = Time(fromString: startString)
+        self.end = Time(fromString: endString)
+    }
+    func toString() -> String {
+        return self.start.toString() + " to " + self.end.toString()
+    }
     static func ==(lhs: TimeRange, rhs: TimeRange) -> Bool {
         return lhs.start == rhs.start && lhs.end == rhs.end
     }
 }
 
-struct Time: Comparable {
+// done
+struct Time: Comparable, Hashable {
     let seconds: Double
     var hashValue: Int {
         return seconds.hashValue
@@ -89,7 +206,9 @@ struct Time: Comparable {
                     selector += 1
                 }
                 else if char == " " {
-                    selector = 3
+                    if selector == 1 {
+                        selector = 3
+                    }
                 }
             }
         }
