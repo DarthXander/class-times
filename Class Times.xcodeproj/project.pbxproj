@@ -14,6 +14,7 @@
 		5D2A5E231DB6B19300015B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D2A5E211DB6B19300015B28 /* LaunchScreen.storyboard */; };
 		5D2A5E2E1DB6B19300015B28 /* Class_TimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E2D1DB6B19300015B28 /* Class_TimesTests.swift */; };
 		5D2A5E391DB6B19300015B28 /* Class_TimesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2A5E381DB6B19300015B28 /* Class_TimesUITests.swift */; };
+		5D51ABAE1DD3D20000E23B32 /* TimeLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D51ABAD1DD3D20000E23B32 /* TimeLeftView.swift */; };
 		5D75BB3A1DCCF667002169E9 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D75BB391DCCF667002169E9 /* TimeModel.swift */; };
 		5D8CEE221DBA796300283B5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8CEE211DBA796300283B5B /* Schedule.swift */; };
 		5DDCAD9B1DC3D5E90051D722 /* LaSalleScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCAD9A1DC3D5E90051D722 /* LaSalleScheduleData.swift */; };
@@ -50,6 +51,7 @@
 		5D2A5E341DB6B19300015B28 /* Class TimesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Class TimesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2A5E381DB6B19300015B28 /* Class_TimesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class_TimesUITests.swift; sourceTree = "<group>"; };
 		5D2A5E3A1DB6B19300015B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D51ABAD1DD3D20000E23B32 /* TimeLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLeftView.swift; sourceTree = "<group>"; };
 		5D75BB391DCCF667002169E9 /* TimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		5D8CEE211DBA796300283B5B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		5DDCAD9A1DC3D5E90051D722 /* LaSalleScheduleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaSalleScheduleData.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				5D2A5E461DB6B1E900015B28 /* Supporting Files */,
 				5D2A5E1A1DB6B19300015B28 /* ScheduleTimerViewController.swift */,
+				5D51ABAD1DD3D20000E23B32 /* TimeLeftView.swift */,
 				5D75BB391DCCF667002169E9 /* TimeModel.swift */,
 				5DDCAD9A1DC3D5E90051D722 /* LaSalleScheduleData.swift */,
 				5D8CEE211DBA796300283B5B /* Schedule.swift */,
@@ -205,7 +208,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Xander Clair";
 				TargetAttributes = {
 					5D2A5E141DB6B19300015B28 = {
@@ -281,6 +284,7 @@
 			files = (
 				5D8CEE221DBA796300283B5B /* Schedule.swift in Sources */,
 				5DDCAD9B1DC3D5E90051D722 /* LaSalleScheduleData.swift in Sources */,
+				5D51ABAE1DD3D20000E23B32 /* TimeLeftView.swift in Sources */,
 				5D2A5E1B1DB6B19300015B28 /* ScheduleTimerViewController.swift in Sources */,
 				5D2A5E191DB6B19300015B28 /* AppDelegate.swift in Sources */,
 				5D75BB3A1DCCF667002169E9 /* TimeModel.swift in Sources */,
@@ -356,6 +360,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -406,6 +411,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -9,6 +9,17 @@
 import Foundation
 
 enum Weekday {
+    var stringValue: String {
+        switch self {
+        case .monday: return "Monday"
+        case .tuesday: return "Tuesday"
+        case .wednesday: return "Wednesday"
+        case .thursday: return "Thursday"
+        case .friday: return "Friday"
+        case .saturday: return "Saturday"
+        case .sunday: return "Sunday"
+        }
+    }
     case monday, tuesday, wednesday, thursday, friday, saturday, sunday
 }
 
@@ -33,6 +44,14 @@ class Schedule {
             }
         }
         self.times = timesData
+    }
+    func getCurrentClass(time: Time) -> (TimeRange, Course)? {
+        for (range, course) in times {
+            if time.isIn(range: range) {
+                return (range, course)
+            }
+        }
+        return nil
     }
 }
 
@@ -176,6 +195,9 @@ struct TimeRange: Hashable {
         }
         self.start = Time(fromString: startString)
         self.end = Time(fromString: endString)
+    }
+    func contains(time: Time) -> Bool {
+        return time.isIn(range: self)
     }
     func toString() -> String {
         return self.start.toString() + " to " + self.end.toString()
