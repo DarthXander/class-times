@@ -196,6 +196,15 @@ struct TimeRange: Hashable {
         self.start = Time(fromString: startString)
         self.end = Time(fromString: endString)
     }
+    func getPortionDone(time: Time) -> Double? {
+        // if time is in this TimeRange, return how much of this TimeRange has gone by at time
+        if contains(time: time) {
+            return (time.seconds - start.seconds)/(end.seconds - start.seconds)
+        }
+        else {
+            return nil
+        }
+    }
     func contains(time: Time) -> Bool {
         return time.isIn(range: self)
     }

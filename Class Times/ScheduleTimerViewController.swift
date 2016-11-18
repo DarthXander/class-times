@@ -19,11 +19,17 @@ class Test {
     .seven: Course(name: "Honors Chemistry", forLunch: .lunchB)]
 }
 
-class ScheduleTimerViewController: UIViewController {
+class ScheduleTimerViewController: UIViewController, TimeLeftDataSource {
 
-    @IBOutlet var textView: UITextView!
-
+    @IBOutlet weak var timeLeftView: TimeLeftView! {
+        didSet {
+            timeLeftView.dataSource = self
+        }
+    }
+    
+    var timer: Timer?
     var today = Schedule(forDay: TimeInfo.currentWeekday!, withCourses: Test.testCourses)
+    
     
     struct Constants {
         
@@ -31,16 +37,25 @@ class ScheduleTimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let name = today.getCurrentClass(time: TimeInfo.currentTime)?.1.name {
-            textView.text = name
-        }
-        else {
-            textView.text = "Not in Class"
-        }
+        let interval = 0.01
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
     }
     
-    func getFilledAngle() -> CGFloat {
-        return CGFloat(0.0)
+    func update() {
+        timeLeftView.setNeedsDisplay()
     }
+    
+    func getFilledAngle() -> CGFloat? {
+        if let courseAndTime = today.getCurrentClass(time: TimeInfo.currentTime) {
+            let timeRange = courseAndTime.0
+            let current = TimeInfo.currentTime
+            //let nanos = (current.seconds/5.0 - Double(Int(current.seconds/5.0)))*2.0*M_PI
+            let portion = timeRange.getPortionDone(time: current)!*2.0*M_PI
+            return CGFloat(portion)
+        }
+        else {
+            return nil
+        }
+     }
 
 }

@@ -9,9 +9,10 @@
 import UIKit
 
 protocol TimeLeftDataSource: class {
-    func getFilledAngle() -> CGFloat
+    func getFilledAngle() -> CGFloat?
 }
 
+@IBDesignable
 class TimeLeftView: UIView {
     var dataSource: TimeLeftDataSource? {
         didSet {
@@ -36,10 +37,21 @@ class TimeLeftView: UIView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        if let source = dataSource {
-            let path = UIBezierPath(arcCenter: countdownCenter, radius: radius, startAngle: 0.0, endAngle: source.getFilledAngle(), clockwise: true)
+        if let source = dataSource, let angle = source.getFilledAngle() {
+            color = UIColor.red
+            //let path = UIBezierPath(arcCenter: countdownCenter, radius: radius, startAngle: 0.0, endAngle: angle, clockwise: true)
+            let offset = CGFloat(-M_PI/2.0)
+            let path = UIBezierPath(arcCenter: countdownCenter, radius: radius, startAngle: offset, endAngle: offset + angle, clockwise: true)
+            path.addLine(to: CGPoint(x: countdownCenter.x, y: countdownCenter.y))
+            path.close()
             path.fill()
         }
+        else {
+            color = UIColor.gray
+            let offset = CGFloat(M_PI/2.0)
+            let path = UIBezierPath(arcCenter: countdownCenter, radius: radius, startAngle: offset, endAngle: offset + CGFloat(2.0*M_PI), clockwise: true)
+            path.fill()
+        }te
     }
  
 
